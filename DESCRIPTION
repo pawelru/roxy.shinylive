@@ -1,12 +1,13 @@
 Type: Package
 Package: roxy.shinylive
 Title: A Roxygen2 Extension for Shinylive
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: c(
     person("Pawel Rucki", , , "pawel.rucki@roche.com", role = c("aut", "cre")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
-Description: An extension for roxygen2 that allows to auto-create links to shinylive from examples in the documentation.
+Description: An extension for roxygen2 that allows to auto-create links to
+    shinylive from examples in the documentation.
 License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/roxy.shinylive/
 BugReports: https://github.com/insightsengineering/roxy.shinylive/issues
@@ -22,22 +23,16 @@ Suggests:
     pkgdown (>= 1.2.0),
     testthat (>= 3.0.4),
     withr (>= 2.4.3)
-Config/Needs/verdepcheck:
-    tidyverse/glue,
-    jeroen/jsonlite,
-    lzstring=parmsam/lzstring-r,
-    r-lib/roxygen2,
-    tidyverse/stringr,
-    r-lib/pkgdown,
-    r-lib/testthat,
-    r-lib/withr
+Config/Needs/verdepcheck:tidyverse/glue, jeroen/jsonlite,
+    lzstring=parmsam/lzstring-r, r-lib/roxygen2, tidyverse/stringr,
+    r-lib/pkgdown, r-lib/testthat, r-lib/withr
 Config/Needs/website: insightsengineering/nesttemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Config/testthat/edition: 3
 Collate:
     'tag_examplesShinylive.R'
     'parse_url.R'
