@@ -24,7 +24,7 @@ Suggests:
     testthat (>= 3.1.5),
     withr (>= 2.4.3)
 Remotes:
-    pawelru/lzstring-r#fix_bom
+    lzstring=pawelru/lzstring-r#fix_bom
 Config/Needs/verdepcheck: tidyverse/glue, jeroen/jsonlite,
     lzstring=parmsam/lzstring-r, r-lib/roxygen2, tidyverse/stringr,
     r-lib/pkgdown, r-lib/testthat, r-lib/withr
