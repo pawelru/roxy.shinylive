@@ -132,7 +132,7 @@ jobs:
             string_utf16
           }
           library(lzstring)
-          assignInNamespace(x = "convert_to_utf16le", value = foo_with_debug, ns = "lzstring")
+          #assignInNamespace(x = "convert_to_utf16le", value = foo_with_debug, ns = "lzstring")
           print("function")
           print(lzstring:::convert_to_utf16le)
           print("charToRaw")
