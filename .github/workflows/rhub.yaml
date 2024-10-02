@@ -152,7 +152,7 @@ jobs:
               },
               ns = "lzstring"
           )
-          print(lzstrinng:::convert_to_utf16le)
+          print(lzstring:::convert_to_utf16le)
           print(charToRaw("\xFF\xFE"))
           print(lzstring:::convert_to_utf16le("test"))
           print(lzstring:::compressToEncodedURIComponent_(lzstring:::convert_to_utf16le("test")))
