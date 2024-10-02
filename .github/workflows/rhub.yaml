@@ -68,12 +68,6 @@ jobs:
         with:
           job-config: ${{ matrix.config.job-config }}
 
-      - uses: insightsengineering/setup-r-dependencies@v1
-        with:
-          skip-install: true
-          github-token: ${{ steps.github-token.outputs.token }}
-          restore-description: false
-
       - uses: r-hub/actions/setup-deps@v1
         with:
           job-config: ${{ matrix.config.job-config }}
@@ -117,12 +111,6 @@ jobs:
       - uses: r-hub/actions/platform-info@v1
         with:
           job-config: ${{ matrix.config.job-config }}
-
-      - uses: insightsengineering/setup-r-dependencies@v1
-        with:
-          skip-install: true
-          github-token: ${{ steps.github-token.outputs.token }}
-          restore-description: false
 
       - uses: r-hub/actions/setup-deps@v1
         with:
