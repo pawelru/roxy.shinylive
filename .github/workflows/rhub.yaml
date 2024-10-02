@@ -133,19 +133,26 @@ jobs:
 
       - name: test
         run: |
+          library(lzstring)
           assignInNamespace(
               x = "convert_to_utf16le",
               value = function(string) {
                   string <- enc2utf8(string)
                   string_utf16 <- iconv(string, from = "UTF-8", to = "UTF-16LE", toRaw = TRUE)[[1]]
                   bom_le <- charToRaw("\xFF\xFE")
+                  print("comparing")
+                  print(string_utf16[1:2])
+                  print(bom_le)
                   if (!identical(string_utf16[1:2], bom_le)) {
-                      string_utf16 <<- c(bom_le, string_utf16)
+                      print("adding BOM")
+                      string_utf16 <- c(bom_le, string_utf16)
+                      print(string_utf16)
                   }
                   string_utf16
               },
               ns = "lzstring"
           )
+          print(lzstrinng:::convert_to_utf16le)
           print(charToRaw("\xFF\xFE"))
           print(lzstring:::convert_to_utf16le("test"))
           print(lzstring:::compressToEncodedURIComponent_(lzstring:::convert_to_utf16le("test")))
