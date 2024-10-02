@@ -15,31 +15,6 @@ on:
         description: |
           Github token with read access to repositories
         required: false
-    inputs:
-      config:
-        description: "A comma separated list of R-hub platforms to use."
-        type: string
-        # These platforms correspond roughly to CRAN package checks.
-        # More information: https://github.com/insightsengineering/idr-tasks/issues/781
-        # All supported R-hub platforms can be viewed by running: rhub::rhub_platforms()
-        # Container-based platforms (as opposed to VM-based Windows and macOS platforms)
-        # can be also viewed here: https://r-hub.github.io/containers/containers.html
-        # gcc14 = r-devel-linux-x86_64-fedora-gcc
-        #
-        # "linux" check (linux (R-devel)) is temporarily disabled because of unexplained timeouts
-        # in setup-r-dependencies step "Modify DESCRIPTION file (development)"
-        default: >-
-          r-devel-windows-x86_64,
-          r-release-linux-x86_64,
-          r-release-windows-x86_64,
-          r-oldrel-windows-x86_64
-      lookup-refs:
-        description: |
-          List of package references to be used for the feature branch.
-          Multiple entries in new lines or separated by commas.
-        required: false
-        default: ""
-        type: string
 
 concurrency:
   group: r-hub-${{ github.event.pull_request.number || github.ref }}
@@ -55,7 +30,11 @@ jobs:
     steps:
       - uses: r-hub/actions/setup@v1
         with:
-          config: ${{ inputs.config }}
+          config: >-
+            r-devel-windows-x86_64,
+            r-release-linux-x86_64,
+            r-release-windows-x86_64,
+            r-oldrel-windows-x86_64
         id: rhub-setup
 
   linux-containers:
@@ -91,7 +70,6 @@ jobs:
 
       - uses: insightsengineering/setup-r-dependencies@v1
         with:
-          lookup-refs: ${{ inputs.lookup-refs }}
           skip-install: true
           github-token: ${{ steps.github-token.outputs.token }}
           restore-description: false
@@ -142,7 +120,6 @@ jobs:
 
       - uses: insightsengineering/setup-r-dependencies@v1
         with:
-          lookup-refs: ${{ inputs.lookup-refs }}
           skip-install: true
           github-token: ${{ steps.github-token.outputs.token }}
           restore-description: false
