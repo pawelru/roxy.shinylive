@@ -141,11 +141,16 @@ jobs:
             string_utf16
           }
           library(lzstring)
-          #assignInNamespace(x = "convert_to_utf16le", value = foo, ns = "lzstring")
+          assignInNamespace(x = "convert_to_utf16le", value = foo_with_debug, ns = "lzstring")
+          print("function")
           print(lzstring:::convert_to_utf16le)
+          print("charToRaw")
           print(charToRaw("\xFF\xFE"))
+          print("lzstring:::convert_to_utf16le")
           print(lzstring:::convert_to_utf16le("test"))
+          print("lzstring:::compressToEncodedURIComponent_")
           print(lzstring:::compressToEncodedURIComponent_(lzstring:::convert_to_utf16le("test")))
+          print("lzstring::compressToEncodedURIComponent")
           print(lzstring::compressToEncodedURIComponent("test"))
         shell: Rscript {0}
 
