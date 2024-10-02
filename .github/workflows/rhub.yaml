@@ -133,6 +133,7 @@ jobs:
 
       - name: test
         run: |
+          print(charToRaw("\xFF\xFE"))
           print(lzstring:::convert_to_utf16le("test"))
           print(lzstring:::compressToEncodedURIComponent_(lzstring:::convert_to_utf16le("test")))
           print(lzstring::compressToEncodedURIComponent("test"))
