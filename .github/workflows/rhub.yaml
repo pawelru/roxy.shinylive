@@ -134,6 +134,7 @@ jobs:
       - name: test
         run: |
           lzstring::compressToEncodedURIComponent("test")
+          traceback()
         shell: Rscript {0}
 
       - uses: r-hub/actions/run-check@v1
